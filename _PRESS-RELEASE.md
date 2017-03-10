@@ -25,7 +25,7 @@ Chat with friends for fun and the friendly assistant @Jarvis for answers!
 Instead of leaving a chat to have Google answer your questions, you can ask @Jarvis directly in the chat room.
 
 ## Summary ##
-You're chatting with a friend. You have a question your friend can't answer. Your friend also wants to know the answer. What do you do? Where you do you go to get your question answered? Do you leave the room for a few minutes and have your friend sit in silence while you scour the web. No you ask @Jarvis directly in your chat room. @Jarvis will reply within a few seconds!
+You're chatting with a friend. You have a question your friend can't answer. Your friend also wants to know the answer. What do you do? Where do you go? Do you leave the room for a few minutes and have your friend sit in silence while you scour the web. No you ask @Jarvis directly in your chat room. @Jarvis will reply within a few seconds!
 
 ## Problem ##
 
