@@ -9,8 +9,8 @@ class MessageFeed extends Component {
   render() {
     return (
       <div id="MessageFeed">
-        {this.props.messages.map(msg => {
-          return <Message msg={msg} key={msg.id}/>
+        {this.props.messages.map((msg, i) => {
+          return <Message msg={msg} key={msg._id || i}/>
         })}
       </div>
     )

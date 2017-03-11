@@ -5,9 +5,11 @@ class Message extends Component {
     super(props)
   }
   render() {
+    const date = new Date(this.props.msg.createdAt)
     return (
       <div className="message">
-        <span className="username">{this.props.msg.username}</span>- <span>{this.props.msg.text}</span>
+        <div><span className="username">{this.props.msg.username}</span> - {this.props.msg.text}</div>
+        <div className="time"> at {date.toDateString()}</div>
       </div>
     )
   }

@@ -6,6 +6,7 @@ var io = require('socket.io')(server)
 var mongoose = require('mongoose')
 mongoose.Promise = require('bluebird')
 var bodyParser = require('body-parser')
+var apiRoutes = require('./routes')
 var appName = 'jarvis'
 
 mongoose.connect(`mongodb://localhost/${appName}`)
@@ -24,6 +25,8 @@ app.use(express.static(path.join(__dirname, '../app/static')))
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../index.html'))
 })
+
+app.use('/api', apiRoutes)
 
 var host = process.env.HOST || '127.0.0.1';
 var port = process.env.PORT || 8080;

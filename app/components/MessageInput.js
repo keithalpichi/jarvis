@@ -10,7 +10,8 @@ class MessageInput extends Component {
   handleChatSend() {
     const message = {}
     message.text = this.refs.message.value
-    message.username = 'Jarvis'
+    message.username = this.refs.username.value
+    debugger
     this.props.addMessage(message)
     this.refs.message.value = ''
   }
@@ -22,8 +23,17 @@ class MessageInput extends Component {
   render() {
     return (
       <div id="MessageInput">
-        <input id="message-input" ref="message" autoComplete="off" onKeyPress={this.handleKeyPress}/>
-        <button onClick={this.handleChatSend}>Send</button>
+        <div id="message-box" >
+          <input id="message-username" ref="username" autoComplete="on" placeholder="Username"/>
+          <input id="message-input" ref="message"
+            autoComplete="off" onKeyPress={this.handleKeyPress}
+            placeholder="Message friend or ask @Jarvis"
+            size="40"
+          />
+        </div>
+        <div id="message-button">
+          <button type="button" id="send-button" className="btn btn-success" onClick={this.handleChatSend}>Send</button>
+        </div>
       </div>
     )
   }
