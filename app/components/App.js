@@ -11,6 +11,18 @@ class App extends Component {
     this.addMessage = this.addMessage.bind(this)
   }
 
+  componentWillMount() {
+    socket.on('message sent', (msg) => {
+      console.log(msg);
+      this.setState({
+        messages: [
+          ...this.state.messages,
+          msg
+        ]
+      })
+    })
+  }
+
   addMessage(msg) {
     const newMsg = {
       text: msg.text,
@@ -23,6 +35,7 @@ class App extends Component {
         newMsg
       ]
     })
+    socket.emit('message sent', newMsg)
   }
 
   render() {

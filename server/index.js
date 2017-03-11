@@ -33,6 +33,11 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function () {
     console.log('User disconnected');
   })
+
+  socket.on('message sent', function (msg) {
+    console.log(`Message sent: ${msg.text} by ${msg.username}`)
+    socket.broadcast.emit('message sent', msg)
+  })
 })
 
 io.on('connect', function (socket) {
