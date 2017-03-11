@@ -9,7 +9,7 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "build"),
+    contentBase: path.join(__dirname, "app/static"),
     filename: 'index.js',
     compress: true,
     watchContentBase: true,

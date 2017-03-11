@@ -4,7 +4,7 @@
   "description": "Chat with friends and Jarvis",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --open",
+    "dev": "npm run build && npm start",
     "build": "./node_modules/.bin/webpack",
     "start": "nodemon server/index.js"
   },

@@ -1,6 +1,8 @@
 var path = require('path')
 var express = require('express')
 var app = express()
+var server = require('http').createServer(app)
+var io = require('socket.io')(server)
 var mongoose = require('mongoose')
 mongoose.Promise = require('bluebird')
 var bodyParser = require('body-parser')
@@ -26,7 +28,20 @@ app.get('/', function (req, res) {
 var host = process.env.HOST || '127.0.0.1';
 var port = process.env.PORT || 8080;
 
-app.listen(port, host, (err) => {
+io.on('connection', function (socket) {
+  console.log('User connected');
+  socket.on('disconnect', function () {
+    console.log('User disconnected');
+  })
+})
+
+io.on('connect', function (socket) {
+  socket.on('message', function (msg) {
+    console.log('Message: ' + msg);
+  })
+})
+
+server.listen(port, host, (err) => {
   if (err) {
     console.log('Error on server start: ', err);
   } else {

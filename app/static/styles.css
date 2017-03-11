@@ -1,0 +1,33 @@
+body {
+  background: #fff;
+}
+
+#ChatContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 4px;
+  background: #E4F1FE;
+}
+
+#MessageInput {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#MessageFeed {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.message {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.message .username {
+ font-weight: bold;
+}
