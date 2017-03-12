@@ -7,6 +7,7 @@ class MessageFeed extends Component {
   }
 
   render() {
+    if (this.props.messages.length === 0) return null
     return (
       <div id="MessageFeed">
         {this.props.messages.map((msg, i) => {

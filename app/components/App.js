@@ -15,6 +15,7 @@ class App extends Component {
     this.addMessage = this.addMessage.bind(this)
     this.pushMsgToState = this.pushMsgToState.bind(this)
     this.replaceMessages = this.replaceMessages.bind(this)
+    this.emitMessage = this.emitMessage.bind(this)
   }
 
   componentWillMount() {
@@ -34,12 +35,16 @@ class App extends Component {
   }
 
   pushMsgToState(msg) {
-    this.setState({
-      messages: [
-        ...this.state.messages,
-        msg
-      ]
-    })
+    const here = this
+    return new Promise(function(res, rej) {
+      here.setState({
+        messages: [
+          ...here.state.messages,
+          msg
+        ]
+      })
+      res(msg)
+    });
   }
 
   replaceMessages(messages) {
@@ -60,6 +65,7 @@ class App extends Component {
       newMsg.username = msg.username || 'Guest'
       httpPost('/messages', newMsg)
         .then(this.pushMsgToState)
+        .then(this.emitMessage)
         .catch(function (err) {
           console.log('Error: ', err);
         })
@@ -72,6 +78,7 @@ class App extends Component {
           return httpPost('/messages', assistantMsg)
         })
         .then(this.pushMsgToState)
+        .then(this.emitMessage)
         .catch(function (err) {
           console.log('Error: ', err);
           // assistantMsg.text = 'Master, I failed to answer your inquiry. Can you be a bit more specific?'
@@ -86,11 +93,18 @@ class App extends Component {
       }
       httpPost('/messages', newMsg)
         .then(this.pushMsgToState)
+        .then(this.emitMessage)
         .catch(function (err) {
           console.log('Error: ', err);
         })
     }
-    socket.emit('message sent', newMsg)
+  }
+
+  emitMessage(msg) {
+    const io = socket
+    return new Promise(function(res, rej) {
+      res(io.emit('message sent', msg))
+    });
   }
 
   parseMessageForQuery(message) {

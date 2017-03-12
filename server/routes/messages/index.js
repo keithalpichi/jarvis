@@ -29,7 +29,6 @@ messages.get('/', function (req, res) {
 
 // Post a single message
 messages.post('/', function (req, res) {
-  console.log(req.body);
   const newMsg = new Message({
     text: req.body.text,
     username: req.body.username

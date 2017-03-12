@@ -43,7 +43,7 @@ const findAnswersInData = function (data) {
       if (text != "") results.push(text)
     })
   })
-  return `I found this: ${results.join(", ")}.`
+  return `I found this: ${results.join(",\n")}.`
 }
 
 module.exports = jarvis
