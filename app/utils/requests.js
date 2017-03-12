@@ -43,7 +43,6 @@ export const getFromWolfram = (query) => {
     }
   })
     .then(function (res) {
-      debugger
       return res.data
     })
     .catch(function (err) {

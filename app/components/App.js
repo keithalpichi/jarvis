@@ -59,7 +59,6 @@ class App extends Component {
 
     if (jarvisRequest) {
       const query = jarvisRequest[1]
-      debugger
       const assistantMsg = {}
       newMsg.text = msg.text
       newMsg.username = msg.username || 'Guest'
@@ -72,7 +71,6 @@ class App extends Component {
 
       getFromWolfram(query)
         .then(function (answer) {
-          debugger
           assistantMsg.text = answer
           assistantMsg.username = 'Jarvis'
           return httpPost('/messages', assistantMsg)

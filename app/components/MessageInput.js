@@ -11,7 +11,6 @@ class MessageInput extends Component {
     const message = {}
     message.text = this.refs.message.value
     message.username = this.refs.username.value
-    debugger
     this.props.addMessage(message)
     this.refs.message.value = ''
   }
