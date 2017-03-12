@@ -50,22 +50,3 @@ export const getFromWolfram = (query) => {
       console.log(err);
     })
 }
-
-
-// export const getFromWolfram = (query) => {
-//   return axios.get(wolframUrl, {
-//     params: {
-//       appid: wolframAPIKey,
-//       input: query,
-//       withCredentials: true,
-//       output: 'json',
-//     }
-//   })
-//     .then(function (res) {
-//       debugger
-//       return res.data.subpods[0]
-//     })
-//     .catch(function (err) {
-//       console.log(err);
-//     })
-// }

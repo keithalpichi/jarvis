@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ChatContainer from './ChatContainer'
+import MessageInput from './MessageInput'
+import MessageFeed from './MessageFeed'
 import { httpGetAll, httpPost, getFromWolfram } from '../utils/requests'
 import { parseString } from 'xml2js'
 
@@ -72,10 +74,10 @@ class App extends Component {
         .then(this.pushMsgToState)
         .catch(function (err) {
           console.log('Error: ', err);
-          assistantMsg.text = 'Master, I failed to answer your inquiry. Can you be a bit more specific?'
-          assistantMsg.username = 'Jarvis'
-          httpPost('/messages', assistantMsg)
-            .then(this.pushMsgToState)
+          // assistantMsg.text = 'Master, I failed to answer your inquiry. Can you be a bit more specific?'
+          // assistantMsg.username = 'Jarvis'
+          // httpPost('/messages', assistantMsg)
+          //   .then(this.pushMsgToState)
         })
     } else {
       newMsg = {
@@ -99,7 +101,8 @@ class App extends Component {
     return (
       <div>
         <h2 id="header">Jarvis</h2>
-        <ChatContainer addMessage={this.addMessage} messages={this.state.messages} />
+        <MessageFeed messages={this.state.messages}/>
+        <MessageInput addMessage={this.addMessage} changeUsername={this.changeUsername}/>
       </div>
 
     )

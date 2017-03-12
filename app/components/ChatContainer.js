@@ -10,8 +10,6 @@ class ChatContainer extends Component {
   render() {
     return (
       <div id="ChatContainer">
-        <MessageInput addMessage={this.props.addMessage} changeUsername={this.props.changeUsername}/>
-        <MessageFeed messages={this.props.messages}/>
       </div>
     )
   }

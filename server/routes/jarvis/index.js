@@ -6,31 +6,6 @@ const url = require('url')
 const wolframUrl = 'http://api.wolframalpha.com/v2/query?'
 const wolframAPIKey = require('../../../keys').wolframAPIKey
 
-// const defaultOptions = {
-//   hostname: wolframUrl,
-//   method: 'GET',
-//   headers: {
-//     'access-control-allow-origin': '*',
-//     'access-control-allow-methods': 'GET, POST, PUT, DELETE, OPTIONS',
-//     'access-control-max-age': 10,
-//     'Content-Type': 'application/json'
-//   }
-// }
-//
-// jarvis.get('/', function (req, res) {
-//   const options = defaultOptions
-//   options.path = createQuery(req)
-//   http.request(options, function (res) {
-//     console.log('response in /jarvis endpoint is ', res);
-//     parseString(res.data, function (err, result) {
-//       if (err) {
-//         res.status(400).json(err)
-//       } else {
-//         res.status(200).json(result)
-//       }
-//   })
-// })
-
 jarvis.get('/', function (req, res) {
   const parts = url.parse(req.url, true)
   const query = parts.query
@@ -43,22 +18,32 @@ jarvis.get('/', function (req, res) {
       format: 'plaintext'
     }
   }).then(function (result) {
-    console.log('Result from wolfram = ', result.data.queryresult);
     const data = result.data.queryresult
     if (!data.success) {
-      const err = new Error('No results found')
-      res.status(400).json(err)
+      res.status(200).json('Master, I failed to answer your inquiry. Can you be a bit more specific?')
     } else {
-      res.status(200).json(data.pods)
+      const answer = findAnswersInData(data.pods)
+      res.status(200).json(answer)
     }
   }).catch(function (err) {
     console.log(err);
-    res.status(400).json(err)
+    res.status(200).json('Master, I failed to answer your inquiry. Can you be a bit more specific?')
   })
 })
 
 const createQuery = function (req) {
   return `appid=${req.params.wolframAPIKey}&input=${req.params.query}&withCredentials=true&output=json`
+}
+
+const findAnswersInData = function (data) {
+  let results = []
+  data.forEach(function (pod) {
+    pod.subpods.forEach(function (sub) {
+      const text = sub.plaintext
+      if (text != "") results.push(text)
+    })
+  })
+  return `I found this: ${results.join(", ")}.`
 }
 
 module.exports = jarvis
