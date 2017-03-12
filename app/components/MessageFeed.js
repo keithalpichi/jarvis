@@ -11,7 +11,7 @@ class MessageFeed extends Component {
     return (
       <div id="MessageFeed">
         {this.props.messages.map((msg, i) => {
-          return <Message msg={msg} key={msg._id || i}/>
+          return <Message msg={msg} key={msg._id || i} i={i}/>
         })}
       </div>
     )
