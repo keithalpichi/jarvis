@@ -20,7 +20,7 @@ jarvis.get('/', function (req, res) {
   }).then(function (result) {
     const data = result.data.queryresult
     if (!data.success) {
-      res.status(200).json('Master, I failed to answer your inquiry. Can you be a bit more specific?')
+      res.status(200).json('My apologies. I failed to answer your inquiry. Can you be a bit more specific?')
     } else {
       const answer = findAnswersInData(data.pods)
       res.status(200).json(answer)
