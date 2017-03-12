@@ -1,6 +1,8 @@
 import axios from 'axios'
+import { wolframUrl, wolframAPIKey } from '../../keys'
 
 const baseUrl = '/api'
+const jarvisEndpoint = '/jarvis'
 
 export const httpGetAll = (endpoint) => {
   //console.log('Sending a get all to endpoint ' + baseUrl + endpoint);
@@ -14,7 +16,7 @@ export const httpGetAll = (endpoint) => {
 }
 
 export const httpGetOne = (endpoint, id) =>  {
-  return axios.get(baseUrl + enpoint + id)
+  return axios.get(baseUrl + endpoint + id)
     .then(function (res) {
       return res.data
     })
@@ -33,3 +35,37 @@ export const httpPost = (endpoint, params) => {
       console.log(err);
     })
 }
+
+export const getFromWolfram = (query) => {
+  return axios.get(baseUrl + jarvisEndpoint, {
+    params: {
+      input: query
+    }
+  })
+    .then(function (res) {
+      debugger
+      return res.data
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+}
+
+
+// export const getFromWolfram = (query) => {
+//   return axios.get(wolframUrl, {
+//     params: {
+//       appid: wolframAPIKey,
+//       input: query,
+//       withCredentials: true,
+//       output: 'json',
+//     }
+//   })
+//     .then(function (res) {
+//       debugger
+//       return res.data.subpods[0]
+//     })
+//     .catch(function (err) {
+//       console.log(err);
+//     })
+// }

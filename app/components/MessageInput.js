@@ -31,9 +31,6 @@ class MessageInput extends Component {
             size="40"
           />
         </div>
-        <div id="message-button">
-          <button type="button" id="send-button" className="btn btn-success" onClick={this.handleChatSend}>Send</button>
-        </div>
       </div>
     )
   }

@@ -7,6 +7,7 @@ var mongoose = require('mongoose')
 mongoose.Promise = require('bluebird')
 var bodyParser = require('body-parser')
 var apiRoutes = require('./routes')
+var cors = require('cors')
 var appName = 'jarvis'
 
 mongoose.connect(`mongodb://localhost/${appName}`)
@@ -18,6 +19,8 @@ db.once('open', function() {
   console.log('Connected to the DB')
 });
 
+app.use(cors())
+app.options('*', cors());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../app/static')))
