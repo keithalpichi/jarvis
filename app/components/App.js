@@ -81,10 +81,6 @@ class App extends Component {
         .then(this.emitMessage)
         .catch(function (err) {
           console.log('Error: ', err);
-          // assistantMsg.text = 'Master, I failed to answer your inquiry. Can you be a bit more specific?'
-          // assistantMsg.username = 'Jarvis'
-          // httpPost('/messages', assistantMsg)
-          //   .then(this.pushMsgToState)
         })
     } else {
       newMsg = {

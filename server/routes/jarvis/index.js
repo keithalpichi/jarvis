@@ -27,7 +27,7 @@ jarvis.get('/', function (req, res) {
     }
   }).catch(function (err) {
     console.log(err);
-    res.status(200).json('Master, I failed to answer your inquiry. Can you be a bit more specific?')
+    res.status(200).json('My apologies. I failed to answer your inquiry. Can you be a bit more specific?')
   })
 })
 
@@ -40,7 +40,10 @@ const findAnswersInData = function (data) {
   data.forEach(function (pod) {
     pod.subpods.forEach(function (sub) {
       const text = sub.plaintext
-      if (text != "") results.push(text)
+      if (text != "") {
+        const reformattedText = text.replace(/ \|  \|/g, '.').replace(/ \|/g, '.')
+        results.push(reformattedText)
+      }
     })
   })
   return `I found this: ${results.join(",\n")}.`
