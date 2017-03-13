@@ -1,7 +1,12 @@
 body {
-  background: #fff;
   font-size: 16px;
   color: #2d2d2d;
+  background: rgb(189, 110, 255);
+  background: -moz-linear-gradient(45deg, rgba(190,111,255,1) 0%, rgba(0,100,196,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(190,111,255,1)), color-stop(100%, rgba(0,100,194,1)));
+  background: -webkit-linear-gradient(45deg, rgba(190,111,255,1) 0%, rgba(0,100,196,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(190,111,255,1) 0%, rgba(0,100,196,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(190,111,255,1) 0%, rgba(0,100,196,1) 100%);
   background: linear-gradient(45deg, rgb(189, 110, 255) 0%, rgb(0, 99, 196) 100%);
 }
 
@@ -69,28 +74,6 @@ input#message-username, input#message-input {
   border-radius: 4px;
   padding: 6px;
   margin: 6px;
-}
-
-rightBubble {
-  background: rgb(0, 99, 196);
-  background: -moz-linear-gradient(45deg, rgb(0, 99, 196) 0%, rgb(189, 110, 255) 100%);
-  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgb(189, 110, 255)), color-stop(100%, rgba(230,160,39,1)));
-  background: -webkit-linear-gradient(45deg, rgb(0, 99, 196) 0%, rgb(189, 110, 255) 100%);
-  background: -o-linear-gradient(45deg, rgb(0, 99, 196) 0%, rgb(189, 110, 255) 100%);
-  background: -ms-linear-gradient(45deg, rgb(0, 99, 196) 0%, rgb(189, 110, 255) 100%);
-  background: linear-gradient(45deg, rgb(0, 99, 196) 0%, rgb(189, 110, 255) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed4021', endColorstr='#e6a027', GradientType=1 );
-}
-
-leftBubble {
-  background: rgb(189, 110, 255);
-  background: -moz-linear-gradient(45deg, rgb(189, 110, 255) 0%, rgb(0, 99, 196) 100%);
-  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgb(0, 99, 196)), color-stop(100%, rgba(237,64,33,1)));
-  background: -webkit-linear-gradient(45deg, rgb(189, 110, 255) 0%, rgb(0, 99, 196) 100%);
-  background: -o-linear-gradient(45deg, rgb(189, 110, 255) 0%, rgb(0, 99, 196) 100%);
-  background: -ms-linear-gradient(45deg, rgb(189, 110, 255) 0%, rgb(0, 99, 196) 100%);
-  background: linear-gradient(45deg, rgb(189, 110, 255) 0%, rgb(0, 99, 196) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6a027', endColorstr='#ed4021', GradientType=1 );
 }
 
 .leftBubble:before {
