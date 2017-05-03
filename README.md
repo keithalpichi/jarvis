@@ -1,5 +1,5 @@
 # Jarvis
-A chat app that includes a friendly assistant named Jarvis to answer any questions. No need to leave the chat to search the web. Jarvis will do his best to answer your questions.
+A chat app with a friendly chat-room smart assistant. Tag 'Jarvis' with a question and he will answer. No need to leave the chat to search the web.
 
 ## To-Do
 - Fix repeating background gradient
